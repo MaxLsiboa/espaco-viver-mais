@@ -156,13 +156,11 @@
   <section id="accommodations">
     <h2>Acomodações</h2>
     <div id="topImageContainer">
-        <img src="images/banner1.jpeg" class="d-block w-100 top-image active" alt="Acomodação 1">
-        <img src="images/banner2.jpeg" class="d-none w-100 top-image" alt="Acomodação 2">
-        <img src="images/banner3.jpeg" class="d-none w-100 top-image" alt="Acomodação 3">
+        <img src="images/banner1.jpeg" class="top-image active" alt="Acomodação 1">
+        <img src="images/banner2.jpeg" class="top-image" alt="Acomodação 2">
+        <img src="images/banner3.jpeg" class="top-image" alt="Acomodação 3">
         <!-- Adicione mais itens conforme necessário -->
     </div>
-</section>
-
 </section>
 
   <section id="activities">
@@ -175,26 +173,25 @@
   </footer>
   
   <script>
-    // Script para manipular a transição entre imagens
-    document.addEventListener('DOMContentLoaded', function () {
-      const images = document.querySelectorAll('.top-image');
-      let index = 0;
+  document.addEventListener('DOMContentLoaded', function () {
+    const images = document.querySelectorAll('.top-image');
+    let index = 0;
 
-      function showImage() {
-        images.forEach((image, i) => {
-          image.classList.remove('active');
-          if (i === index) {
-            image.classList.add('active');
-          }
-        });
+    function showImage() {
+      images.forEach((image, i) => {
+        image.classList.remove('active');
+        if (i === index) {
+          image.classList.add('active');
+        }
+      });
 
-        index = (index + 1) % images.length;
+      index = (index + 1) % images.length;
 
-        setTimeout(showImage, 2000); // Altera a imagem a cada 2 segundos
-      }
+      setTimeout(showImage, 2000); // Altera a imagem a cada 2 segundos
+    }
 
-      showImage(); // Inicia o processo de transição
-    });
-  </script>
+    showImage(); // Inicia o processo de transição
+  });
+</script>
 </body>
 </html>
