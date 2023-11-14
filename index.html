@@ -163,26 +163,14 @@
     </div>
 </section>
 
-  <section id="activities">
-    <h2>Atividades</h2>
-    <p>Desfrute de uma ampla gama de atividades ao ar livre para todas as idades.</p>
-  </section>
-
-  <footer>
-    <p>&copy; 2022 Espaço Viver Mais. Todos os direitos reservados.</p>
-  </footer>
-  
-  <script>
+<script>
   document.addEventListener('DOMContentLoaded', function () {
     const images = document.querySelectorAll('.top-image');
     let index = 0;
 
     function showImage() {
       images.forEach((image, i) => {
-        image.classList.remove('active');
-        if (i === index) {
-          image.classList.add('active');
-        }
+        image.style.opacity = (i === index) ? 1 : 0;
       });
 
       index = (index + 1) % images.length;
@@ -193,5 +181,15 @@
     showImage(); // Inicia o processo de transição
   });
 </script>
+
+  <section id="activities">
+    <h2>Atividades</h2>
+    <p>Desfrute de uma ampla gama de atividades ao ar livre para todas as idades.</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2022 Espaço Viver Mais. Todos os direitos reservados.</p>
+  </footer>
+  
 </body>
 </html>
