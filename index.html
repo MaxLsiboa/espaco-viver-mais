@@ -112,23 +112,15 @@
 
     .image-container img {
       display: block;
-      max-width: 100%;
+      width: 100%;
       height: auto;
-      transition: transform 0.5s ease; /* Adiciona um efeito de transição */
+      opacity: 0;
+      transition: opacity 0.5s ease;
     }
 
-    /* Adiciona uma classe específica para cada imagem */
-    .image1 { transform: translateX(0%); }
-    .image2 { transform: translateX(-100%); }
-    .image3 { transform: translateX(-200%); }
-    .image4 { transform: translateX(-300%); }
-    .image5 { transform: translateX(-400%); }
-    .image6 { transform: translateX(-500%); }
-    .image7 { transform: translateX(-600%); }
-    .image8 { transform: translateX(-700%); }
-    .image9 { transform: translateX(-800%); }
-    .image10 { transform: translateX(-900%); }
-    .image11 { transform: translateX(-1000%); }
+    .image-container img.active {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
@@ -146,7 +138,7 @@
   </header>
 
   <div class="sidebar">
-    <a href="#banner">Banner</a>
+    <a href="#banner">Inicio</a>
     <a href="#accommodations">Acomodações</a>
     <a href="#activities">Atividades</a>
     <!-- Adicione mais links conforme necessário -->
@@ -163,17 +155,17 @@
   <section id="accommodations">
     <h2>Acomodações</h2>
     <div class="image-container">
-      <img src="images/banner1.jpeg" class="image image1" alt="Acomodação 1">
-      <img src="images/banner2.jpeg" class="image image2" alt="Acomodação 2">
-      <img src="images/banner3.jpeg" class="image image3" alt="Acomodação 3">
-      <img src="images/banner4.jpeg" class="image image4" alt="Acomodação 4">
-      <img src="images/banner5.jpeg" class="image image5" alt="Acomodação 5">
-      <img src="images/banner6.jpeg" class="image image6" alt="Acomodação 6">
-      <img src="images/banner7.jpeg" class="image image7" alt="Acomodação 7">
-      <img src="images/banner8.jpeg" class="image image8" alt="Acomodação 8">
-      <img src="images/banner9.jpeg" class="image image9" alt="Acomodação 9">
-      <img src="images/banner10.jpeg" class="image image10" alt="Acomodação 10">
-      <img src="images/banner11.jpeg" class="image image11" alt="Acomodação 11">
+      <img src="images/banner1.jpeg" class="active" alt="Acomodação 1">
+      <img src="images/banner2.jpeg" alt="Acomodação 2">
+      <img src="images/banner3.jpeg" alt="Acomodação 3">
+      <img src="images/banner4.jpeg" alt="Acomodação 4">
+      <img src="images/banner5.jpeg" alt="Acomodação 5">
+      <img src="images/banner6.jpeg" alt="Acomodação 6">
+      <img src="images/banner7.jpeg" alt="Acomodação 7">
+      <img src="images/banner8.jpeg" alt="Acomodação 8">
+      <img src="images/banner9.jpeg" alt="Acomodação 9">
+      <img src="images/banner10.jpeg" alt="Acomodação 10">
+      <img src="images/banner11.jpeg" alt="Acomodação 11">
     </div>
   </section>
 
@@ -194,9 +186,9 @@
     let currentImage = 1;
 
     function showNextImage() {
-      currentImage = (currentImage % 11) + 1;
       const images = document.querySelectorAll('.image');
       images.forEach(img => img.classList.remove('active'));
+      currentImage = (currentImage % 11) + 1;
       document.querySelector('.image' + currentImage).classList.add('active');
     }
 
