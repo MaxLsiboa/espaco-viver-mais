@@ -75,10 +75,6 @@
       background-color: #0056b3; /* Cor do botão ao passar o mouse - azul escuro Bootstrap */
     }
 
-    #accommodations {
-      margin-bottom: 80px; /* Aumentei a margem inferior para acomodar a barra lateral */
-    }
-
     .sidebar {
       position: fixed;
       top: 0;
@@ -103,24 +99,10 @@
       background-color: #0056b3; /* Cor da barra lateral ao passar o mouse - azul escuro Bootstrap */
     }
 
-    #topImageContainer {
-      width: 100%; /* Garante que o container da imagem ocupe 100% da largura da seção */
-      overflow: hidden; /* Evita que a imagem ultrapasse os limites do container */
-      position: relative; /* Adicionado para posicionar as imagens corretamente */
-    }
-
-    .top-image {
-      width: 100%; /* Garante que a imagem ocupe 100% da largura do container */
-      height: auto; /* Mantém a proporção original da imagem */
-      position: absolute; /* Permite posicionar as imagens sobrepostas */
-      top: 0; /* Posiciona no topo do container */
-      left: 0; /* Posiciona no canto esquerdo do container */
-      opacity: 0; /* Inicialmente, torna as imagens transparentes */
-      transition: opacity 2s ease-in-out; /* Adiciona uma transição suave de opacidade de 2 segundos */
-    }
-
-    .top-image.active {
-      opacity: 1; /* Torna a imagem ativa visível */
+    .carousel-inner img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px; /* Borda arredondada para as imagens do carrossel */
     }
   </style>
 </head>
@@ -155,32 +137,25 @@
 
   <section id="accommodations">
     <h2>Acomodações</h2>
-    <div id="topImageContainer">
-        <img src="images/banner1.jpeg" class="top-image active" alt="Acomodação 1">
-        <img src="images/banner2.jpeg" class="top-image" alt="Acomodação 2">
-        <img src="images/banner3.jpeg" class="top-image" alt="Acomodação 3">
+    <div id="carouselAccommodations" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="images/banner1.jpeg" class="d-block w-100" alt="Acomodação 1">
+        </div>
+        <div class="carousel-item">
+          <img src="images/banner2.jpeg" class="d-block w-100" alt="Acomodação 2">
+        </div>
+        <div class="carousel-item">
+          <img src="images/banner3.jpeg" class="d-block w-100" alt="Acomodação 3">
+        </div>
         <!-- Adicione mais itens conforme necessário -->
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselAccommodations" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      
     </div>
-</section>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const images = document.querySelectorAll('.top-image');
-    let index = 0;
-
-    function showImage() {
-      images.forEach((image, i) => {
-        image.style.opacity = (i === index) ? 1 : 0;
-      });
-
-      index = (index + 1) % images.length;
-
-      setTimeout(showImage, 2000); // Altera a imagem a cada 2 segundos
-    }
-
-    showImage(); // Inicia o processo de transição
-  });
-</script>
+  </section>
 
   <section id="activities">
     <h2>Atividades</h2>
@@ -190,6 +165,9 @@
   <footer>
     <p>&copy; 2022 Espaço Viver Mais. Todos os direitos reservados.</p>
   </footer>
-  
+
+  <!-- Escolha um destes scripts, dependendo da versão que você deseja usar -->
+  <!-- <script src="bootstrap/bootstrap.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
