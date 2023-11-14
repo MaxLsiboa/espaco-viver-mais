@@ -84,7 +84,7 @@
       top: 0;
       bottom: 0;
       left: 0;
-      width: 150px; /* Largura da barra lateral */
+      width: 200px; /* Largura da barra lateral */
       background-color: #007bff; /* Cor da barra lateral - azul Bootstrap */
       color: #fff;
       padding-top: 20px;
@@ -103,11 +103,32 @@
       background-color: #0056b3; /* Cor da barra lateral ao passar o mouse - azul escuro Bootstrap */
     }
 
-    .carousel-inner img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px; /* Borda arredondada para as imagens do carrossel */
+    .image-container {
+      position: relative;
+      max-width: 100%;
+      overflow: hidden;
+      border-radius: 8px; /* Borda arredondada para as imagens */
     }
+
+    .image-container img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      transition: transform 0.5s ease; /* Adiciona um efeito de transição */
+    }
+
+    /* Adiciona uma classe específica para cada imagem */
+    .image1 { transform: translateX(0%); }
+    .image2 { transform: translateX(-100%); }
+    .image3 { transform: translateX(-200%); }
+    .image4 { transform: translateX(-300%); }
+    .image5 { transform: translateX(-400%); }
+    .image6 { transform: translateX(-500%); }
+    .image7 { transform: translateX(-600%); }
+    .image8 { transform: translateX(-700%); }
+    .image9 { transform: translateX(-800%); }
+    .image10 { transform: translateX(-900%); }
+    .image11 { transform: translateX(-1000%); }
   </style>
 </head>
 <body>
@@ -141,30 +162,18 @@
 
   <section id="accommodations">
     <h2>Acomodações</h2>
-    <div id="carouselAccommodations" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="images/banner1.jpeg" class="d-block w-100" alt="Acomodação 1">
-        </div>
-        <div class="carousel-item">
-          <img src="images/banner2.jpeg" class="d-block w-100" alt="Acomodação 2">
-        </div>
-        <div class="carousel-item">
-          <img src="images/banner3.jpeg" class="d-block w-100" alt="Acomodação 3">
-        </div>
-        <div class="carousel-item">
-          <img src="images/banner4.jpeg" class="d-block w-100" alt="Acomodação 4">
-        </div>
-        <!-- Adicione mais itens conforme necessário -->
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselAccommodations" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Anterior</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselAccommodations" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Próximo</span>
-      </button>
+    <div class="image-container">
+      <img src="images/banner1.jpeg" class="image image1" alt="Acomodação 1">
+      <img src="images/banner2.jpeg" class="image image2" alt="Acomodação 2">
+      <img src="images/banner3.jpeg" class="image image3" alt="Acomodação 3">
+      <img src="images/banner4.jpeg" class="image image4" alt="Acomodação 4">
+      <img src="images/banner5.jpeg" class="image image5" alt="Acomodação 5">
+      <img src="images/banner6.jpeg" class="image image6" alt="Acomodação 6">
+      <img src="images/banner7.jpeg" class="image image7" alt="Acomodação 7">
+      <img src="images/banner8.jpeg" class="image image8" alt="Acomodação 8">
+      <img src="images/banner9.jpeg" class="image image9" alt="Acomodação 9">
+      <img src="images/banner10.jpeg" class="image image10" alt="Acomodação 10">
+      <img src="images/banner11.jpeg" class="image image11" alt="Acomodação 11">
     </div>
   </section>
 
@@ -179,5 +188,19 @@
 
   <script src="bootstrap/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Adiciona uma classe ativa para a imagem visível
+    let currentImage = 1;
+
+    function showNextImage() {
+      currentImage = (currentImage % 11) + 1;
+      const images = document.querySelectorAll('.image');
+      images.forEach(img => img.classList.remove('active'));
+      document.querySelector('.image' + currentImage).classList.add('active');
+    }
+
+    setInterval(showNextImage, 2000); // Muda a imagem a cada 2 segundos
+  </script>
 </body>
 </html>
