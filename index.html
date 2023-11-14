@@ -103,23 +103,19 @@
       background-color: #0056b3; /* Cor da barra lateral ao passar o mouse - azul escuro Bootstrap */
     }
 
-    .image-container {
-      position: relative;
-      max-width: 100%;
-      overflow: hidden;
-      border-radius: 8px; /* Borda arredondada para as imagens */
+    #topImageContainer {
+      width: 100%; /* Garante que o container da imagem ocupe 100% da largura da seção */
+      overflow: hidden; /* Evita que a imagem ultrapasse os limites do container */
     }
 
-    .image-container img {
-      display: block;
-      width: 100%;
-      height: auto;
-      opacity: 0;
-      transition: opacity 0.5s ease;
+    .top-image {
+      width: 100%; /* Garante que a imagem ocupe 100% da largura do container */
+      height: auto; /* Mantém a proporção original da imagem */
+      transition: transform 2s ease-in-out; /* Adiciona uma transição suave de 2 segundos */
     }
 
-    .image-container img.active {
-      opacity: 1;
+    .top-image:not(.active) {
+      transform: translateX(100%); /* Inicialmente, mova as imagens para a direita para ocultá-las */
     }
   </style>
 </head>
@@ -138,7 +134,7 @@
   </header>
 
   <div class="sidebar">
-    <a href="#banner">Inicio</a>
+    <a href="#banner">Banner</a>
     <a href="#accommodations">Acomodações</a>
     <a href="#activities">Atividades</a>
     <!-- Adicione mais links conforme necessário -->
@@ -153,43 +149,14 @@
   </section>
 
   <section id="accommodations">
-  <h2>Acomodações</h2>
-  <div id="topImageContainer" class="carousel">
-    <!-- Adicione as imagens conforme necessário -->
-    <img src="images/banner1.jpeg" class="d-block w-100 top-image" alt="Acomodação 1">
-    <img src="images/banner2.jpeg" class="d-none w-100 top-image" alt="Acomodação 2">
-    <img src="images/banner3.jpeg" class="d-none w-100 top-image" alt="Acomodação 3">
-    <!-- Adicione mais itens conforme necessário -->
-  </div>
-</section>
-
-<script>
-  // Obtém a referência do container de imagens
-  var topImageContainer = document.getElementById('topImageContainer');
-
-  // Obtém todas as imagens no container
-  var topImages = topImageContainer.querySelectorAll('.top-image');
-
-  // Índice da imagem atual
-  var currentIndex = 0;
-
-  // Função para mostrar a próxima imagem
-  function showNextImage() {
-    // Oculta a imagem atual
-    topImages[currentIndex].classList.remove('d-block');
-    topImages[currentIndex].classList.add('d-none');
-
-    // Calcula o índice da próxima imagem
-    currentIndex = (currentIndex + 1) % topImages.length;
-
-    // Exibe a próxima imagem
-    topImages[currentIndex].classList.remove('d-none');
-    topImages[currentIndex].classList.add('d-block');
-  }
-
-  // Inicia a transição automática a cada 2 segundos
-  setInterval(showNextImage, 2000);
-</script>
+    <h2>Acomodações</h2>
+    <div id="topImageContainer" class="carousel">
+      <img src="images/banner1.jpeg" class="d-block w-100 top-image active" alt="Acomodação 1">
+      <img src="images/banner2.jpeg" class="d-none w-100 top-image" alt="Acomodação 2">
+      <img src="images/banner3.jpeg" class="d-none w-100 top-image" alt="Acomodação 3">
+      <!-- Adicione mais itens conforme necessário -->
+    </div>
+  </section>
 
   <section id="activities">
     <h2>Atividades</h2>
@@ -202,19 +169,5 @@
 
   <script src="bootstrap/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    // Adiciona uma classe ativa para a imagem visível
-    let currentImage = 1;
-
-    function showNextImage() {
-      const images = document.querySelectorAll('.image');
-      images.forEach(img => img.classList.remove('active'));
-      currentImage = (currentImage % 11) + 1;
-      document.querySelector('.image' + currentImage).classList.add('active');
-    }
-
-    setInterval(showNextImage, 2000); // Muda a imagem a cada 2 segundos
-  </script>
 </body>
 </html>
