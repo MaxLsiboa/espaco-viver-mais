@@ -106,16 +106,21 @@
     #topImageContainer {
       width: 100%; /* Garante que o container da imagem ocupe 100% da largura da seção */
       overflow: hidden; /* Evita que a imagem ultrapasse os limites do container */
+      position: relative; /* Adicionado para posicionar as imagens corretamente */
     }
 
     .top-image {
       width: 100%; /* Garante que a imagem ocupe 100% da largura do container */
       height: auto; /* Mantém a proporção original da imagem */
-      transition: transform 2s ease-in-out; /* Adiciona uma transição suave de 2 segundos */
+      position: absolute; /* Permite posicionar as imagens sobrepostas */
+      top: 0; /* Posiciona no topo do container */
+      left: 0; /* Posiciona no canto esquerdo do container */
+      opacity: 0; /* Inicialmente, torna as imagens transparentes */
+      transition: opacity 2s ease-in-out; /* Adiciona uma transição suave de opacidade de 2 segundos */
     }
 
-    .top-image:not(.active) {
-      transform: translateX(100%); /* Inicialmente, mova as imagens para a direita para ocultá-las */
+    .top-image.active {
+      opacity: 1; /* Torna a imagem ativa visível */
     }
   </style>
 </head>
@@ -169,5 +174,27 @@
 
   <script src="bootstrap/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Script para manipular a transição entre imagens
+    document.addEventListener('DOMContentLoaded', function () {
+      const images = document.querySelectorAll('.top-image');
+      let index = 0;
+
+      function showImage() {
+        images.forEach((image, i) => {
+          image.classList.remove('active');
+          if (i === index) {
+            image.classList.add('active');
+          }
+        });
+
+        index = (index + 1) % images.length;
+
+        setTimeout(showImage, 2000); // Altera a imagem a cada 2 segundos
+      }
+
+      showImage(); // Inicia o processo de transição
+    });
+  </script>
 </body>
 </html>
